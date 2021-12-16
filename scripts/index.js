@@ -28,19 +28,21 @@ const Lists = class {
 
 }
 
-const createHash = function(input) {
-    return crypto.createHash("shake256", { outputLength: 6}) // TODO: Check the outputLength for collisons
+const createHash = function (input) {
+    return crypto.createHash("shake256", { outputLength: 6 }) // TODO: Check the outputLength for collisons
         .update(input)
         .digest("hex");
 }
 
 const createProducerCode = function (euid) {
 
+    // Split between country and register number
     const country = euid.slice(0, 2).toUpperCase();
     const registerCode = euid.substring(2).toUpperCase();
 
-    const registerHash = createHash(registerCode); 
-    const producerCode = country  + registerHash;    
+    // Hash the register number and add country code to beginning of the code
+    const registerHash = createHash(registerCode);
+    const producerCode = country + registerHash;
 
     return producerCode;
 }
@@ -48,8 +50,10 @@ const createProducerCode = function (euid) {
 
 const getFirst2digits = function (number) {
 
+    // Remove leading zeros and dots and get first 2 digits
     number = number.toString().replace(/\./g, '').replace(/^0+/, '').slice(0, 2);
 
+    // Add following zeros if only one digit
     if (number.length === 1) {
         number = number + '0';
     }
@@ -59,11 +63,16 @@ const getFirst2digits = function (number) {
 
 const getExponent = function (number) {
 
+    // Get the exponent in scientific notation
     let exponent = number.toExponential().split('e')[1];
 
     if (exponent < 0) {
+        // Set negative exponent to positive
         exponent = Math.abs(exponent)
+    } else if (exponent > 9) {
+        exponent = 9; // TODO: what to do now?
     } else {
+        // Set positive exponet to 0
         exponent = 0;
     }
 
@@ -96,7 +105,7 @@ encodeBase58 = function (number) {
 
     let encoded = '';
     while (number > 0) {
-        let remainder = number % 58;
+        const remainder = number % 58;
         number = Math.floor(number / 58);
         encoded = alphabet[remainder] + encoded;
     }
@@ -107,11 +116,12 @@ encodeBase58 = function (number) {
 calculateValidationCode = function (number) {
 
     // Use Modulo97 to calculate the validation code
-    let validationCode = 98 - number * 100 % 97; // TODO: Check if this is correct
+    let validationCode = 98 - number * 100 % 97;
 
+    // Add leading zeros if only one digit
     if (validationCode < 10) {
         validationCode = '0' + validationCode;
-    }  else {
+    } else {
         validationCode = validationCode.toString();
     }
 
@@ -121,6 +131,7 @@ calculateValidationCode = function (number) {
 const createSagidV1 = function (source, treatment, form, euid, nitrogen, phosphorus) {
 
     // Validate the input
+    // TODO: Check if the input is valid
 
     // Get the lists
     const lists = new Lists();
@@ -158,6 +169,7 @@ const createSagidV1 = function (source, treatment, form, euid, nitrogen, phospho
 
     // Create the sagid code
     const sagid = `${version}${producerCode}-${sagidEncoded}`;
+
 
     return sagid;
 }
