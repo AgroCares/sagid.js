@@ -28,7 +28,7 @@ const Lists = class {
 }
 
 const getFirst2digits = function (number) {
-    
+
     number = number.toString().replace(/\./g, '').replace(/^0+/, '').slice(0, 2);
 
     if (number.length === 1) {
@@ -71,6 +71,20 @@ createContentCode = function (value, content) {
     return contentCode;
 }
 
+encodeBase58 = function (number) {
+
+    const alphabet = '123456789ABCDEFGHJKLMNPQRSTUVWXYZabcdefghijkmnopqrstuvwxyz';
+
+    let encoded = '';
+    while (number > 0) {
+        let remainder = number % 58;
+        number = Math.floor(number / 58);
+        encoded = alphabet[remainder] + encoded;
+    }
+
+    return encoded;
+}
+
 const createSagidV1 = function (source, treatment, form, nitrogen, phosphorus) {
 
     // Validate the input
@@ -96,10 +110,10 @@ const createSagidV1 = function (source, treatment, form, nitrogen, phosphorus) {
     console.log(phosphorusCode);
 
     // Concate the sagid code
-    const sagid = `${sourceID}${treatmentID}${formID}${nitrogenCode}${phosphorusCode}`;
+    const sagidLong = `${sourceID}${treatmentID}${formID}${nitrogenCode}${phosphorusCode}`;
 
     // Encode the sagid code with base58
-
+    const sagid = encodeBase58(sagidLong);
 
     return sagid;
 }
