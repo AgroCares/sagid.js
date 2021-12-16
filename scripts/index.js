@@ -85,6 +85,20 @@ encodeBase58 = function (number) {
     return encoded;
 }
 
+calculateValidationCode = function (number) {
+
+    // Use Modulo97 to calculate the validation code
+    let validationCode = 98 - number * 100 % 97; // TODO: Check if this is correct
+
+    if (validationCode < 10) {
+        validationCode = '0' + validationCode;
+    }  else {
+        validationCode = validationCode.toString();
+    }
+
+    return validationCode;
+}
+
 const createSagidV1 = function (source, treatment, form, nitrogen, phosphorus) {
 
     // Validate the input
@@ -111,9 +125,15 @@ const createSagidV1 = function (source, treatment, form, nitrogen, phosphorus) {
 
     // Concate the sagid code
     const sagidLong = `${sourceID}${treatmentID}${formID}${nitrogenCode}${phosphorusCode}`;
+    console.log(sagidLong);
+
+    // Calculate validation code using Modulo97
+    const validationCode = calculateValidationCode(sagidLong);
+    const sagidLongValid = sagidLong + validationCode;
+    console.log(sagidLongValid);
 
     // Encode the sagid code with base58
-    const sagid = encodeBase58(sagidLong);
+    const sagid = encodeBase58(sagidLongValid);
 
     return sagid;
 }
