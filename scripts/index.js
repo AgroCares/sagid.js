@@ -72,7 +72,7 @@ const getScientificExponent = function (number) {
     } else if (exponent > 9) {
         exponent = 9; // TODO: what to do now?
     } else {
-        // Set positive exponet to 0
+        // Set positive exponent to 0
         exponent = 0;
     }
 
