@@ -231,4 +231,25 @@ const createSagidV1 = function (source, treatment, form, euid,
     return sagid;
 }
 
+const verifySagidV1 = function (sagid) {
+
+    // Validate the input
+
+    // Verify the sagid
+
+}
+
+const decodeSagidV1 = function (sagid) {
+
+    // Validate the input
+
+    // Get the version
+
+    // Decode the sagid
+
+}
+
+
 exports.createSagid = createSagidV1;
+exports.verifySagid = verifySagidV1;
+exports.decodeSagid = decodeSagidV1;
