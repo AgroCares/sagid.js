@@ -61,7 +61,7 @@ const getFirst2digits = function (number) {
     return number;
 }
 
-const getExponent = function (number) {
+const getScientificExponent = function (number) {
 
     // Get the exponent in scientific notation
     let exponent = number.toExponential().split('e')[1];
@@ -94,7 +94,7 @@ createContentCode = function (value, content) {
         const contentDigits = getFirst2digits(value);
 
         // Get the exponent
-        const contentExponent = getExponent(value);
+        const contentExponent = getScientificExponent(value);
 
         // Create the code
         contentCode = `${contentID}${contentDigits}${contentExponent}`;
