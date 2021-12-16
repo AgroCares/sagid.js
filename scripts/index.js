@@ -1,6 +1,10 @@
 const fs = require('fs');
 const crypto = require('crypto')
 
+/**
+ * List the SAGID codes for forms, sources, treatments and contents
+ */
+
 const Lists = class {
 
     constructor() {
@@ -10,18 +14,43 @@ const Lists = class {
         this.content = JSON.parse(fs.readFileSync('./data/content.json', 'utf8'));
     }
 
+    /**
+     * Get the ID of the form
+     * 
+     * @param {string} form Form for which to get the ID
+     * @returns {number}
+     */
     getFormID(form) {
         return this.forms.find(f => f.form === form).id;
     }
 
+
+    /**
+     * Get the ID of the source
+     * 
+     * @param {string} source Source for which to get the ID
+     * @returns {number}
+     */
     getSourceID(source) {
         return this.sources.find(s => s.source === source).id;
     }
 
+    /**
+     * Get the ID of the treatment
+     * 
+     * @param {string} treatment Treatment for which to get the ID
+     * @returns {number}
+     */
     getTreatmentID(treatment) {
         return this.treatments.find(t => t.treatment === treatment).id;
     }
 
+    /**
+     * Get the ID of the content
+     *  
+     * @param {string} content Content for which to get the ID
+     * @returns {number}
+     */
     getContentID(content) {
         return this.content.find(c => c.content === content).id;
     }
@@ -131,6 +160,34 @@ calculateValidationCode = function (number) {
 
     return validationCode;
 }
+
+/**
+ * Create a SAGID to identify a product
+ * 
+ * @param {string} source Source of the product. See the list of sources in the data folder
+ * @param {string} treatment Treatment of the product. See the list of treatments in the data folder
+ * @param {string} form Form of the product. See the list of treatments in the data folder
+ * @param {string} euid EUropean Unique company IDentifier of the producer
+ * @param {number} nitrogen Total nitrogen (N) content of product in %
+ * @param {number} phosphorus Phosphate (P2O5) content of product in %
+ * @param {number} potassium Potassium (K2O) content of product in %
+ * @param {number} effective_organic_matter Effective organic matter content of product in %
+ * @param {number} sulphur Sulphur (SO3) content of product in %
+ * @param {number} magnesium Magnesium (MgO) content of product in %
+ * @param {number} calcium Calcium (CaO) content of product in %
+ * @param {number} sodium Sodium (Na2O) content of product in %
+ * @param {number} chlorine Chlorine (Cl) content of product in %
+ * @param {number} boron Boron (B) content of product in %
+ * @param {number} copper Copper (Cu) content of product in %
+ * @param {number} iron Iron (Fe) content of product in %
+ * @param {number} manganese Manganese (Mn) content of product in %
+ * @param {number} molybdenum Molibdenum (Mo) content of product in %
+ * @param {number} zinc Zin (Zn) content of product in %
+ * @param {number} selenium Selenium (Se) content of product in %
+ * @param {number} cobalt Cobalt (Co) content of product in %
+ * @param {number} silicon Silicon (Si) content of product in %
+ * @returns {string} The SAGID of the product
+ */
 
 const createSagidV1 = function (source, treatment, form, euid,
     nitrogen = null, phosphorus = null, potassium = null, effective_organic_matter = null,

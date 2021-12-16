@@ -15,5 +15,8 @@
   "bugs": {
     "url": "https://github.com/AgroCares/sagid.js/issues"
   },
-  "homepage": "https://github.com/AgroCares/sagid.js#readme"
+  "homepage": "https://github.com/AgroCares/sagid.js#readme",
+  "devDependencies": {
+    "jsdoc": "^3.6.7"
+  }
 }
