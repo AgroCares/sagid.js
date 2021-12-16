@@ -1,4 +1,5 @@
 const fs = require('fs');
+const crypto = require('crypto')
 
 const Lists = class {
 
@@ -26,6 +27,24 @@ const Lists = class {
     }
 
 }
+
+const createHash = function(input) {
+    return crypto.createHash("shake256", { outputLength: 6}) // TODO: Check the outputLength for collisons
+        .update(input)
+        .digest("hex");
+}
+
+const createProducerCode = function (euid) {
+
+    const country = euid.slice(0, 2).toUpperCase();
+    const registerCode = euid.substring(2).toUpperCase();
+
+    const registerHash = createHash(registerCode); 
+    const producerCode = country  + registerHash;    
+
+    return producerCode;
+}
+
 
 const getFirst2digits = function (number) {
 
@@ -99,12 +118,15 @@ calculateValidationCode = function (number) {
     return validationCode;
 }
 
-const createSagidV1 = function (source, treatment, form, nitrogen, phosphorus) {
+const createSagidV1 = function (source, treatment, form, euid, nitrogen, phosphorus) {
 
     // Validate the input
 
     // Get the lists
     const lists = new Lists();
+
+    // Get version
+    const version = 1;
 
     // Lookup ID for source
     const sourceID = lists.getSourceID(source);
@@ -117,23 +139,25 @@ const createSagidV1 = function (source, treatment, form, nitrogen, phosphorus) {
 
     // Create the code for nitrogen
     const nitrogenCode = createContentCode(nitrogen, 'nitrogen');
-    console.log(nitrogenCode);
 
     // Create the code for phosphorus
     const phosphorusCode = createContentCode(phosphorus, 'phosphorus');
-    console.log(phosphorusCode);
 
     // Concate the sagid code
     const sagidLong = `${sourceID}${treatmentID}${formID}${nitrogenCode}${phosphorusCode}`;
-    console.log(sagidLong);
 
     // Calculate validation code using Modulo97
     const validationCode = calculateValidationCode(sagidLong);
     const sagidLongValid = sagidLong + validationCode;
-    console.log(sagidLongValid);
 
     // Encode the sagid code with base58
-    const sagid = encodeBase58(sagidLongValid);
+    const sagidEncoded = encodeBase58(sagidLongValid);
+
+    // Create the producer code
+    const producerCode = createProducerCode(euid);
+
+    // Create the sagid code
+    const sagid = `${version}${producerCode}-${sagidEncoded}`;
 
     return sagid;
 }
