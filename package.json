@@ -2,9 +2,9 @@
   "name": "sagid",
   "version": "1.0.0",
   "description": "Create, verify and decode Soil Amendment Global ID's",
-  "main": "index.js",
+  "main": "scripts/index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "node tests/test1.js"
   },
   "repository": {
     "type": "git",

@@ -1,0 +1,138 @@
+[
+  {
+    "id": "898",
+    "source": "mineral"
+  },
+  {
+    "id": "296",
+    "source": "cattle"
+  },
+  {
+    "id": "446",
+    "source": "buffaloe"
+  },
+  {
+    "id": "326",
+    "source": "sheep"
+  },
+  {
+    "id": "182",
+    "source": "goat"
+  },
+  {
+    "id": "240",
+    "source": "porker"
+  },
+  {
+    "id": "259",
+    "source": "sow"
+  },
+  {
+    "id": "673",
+    "source": "horse"
+  },
+  {
+    "id": "430",
+    "source": "donkey"
+  },
+  {
+    "id": "872",
+    "source": "mule/hinkey"
+  },
+  {
+    "id": "970",
+    "source": "camel"
+  },
+  {
+    "id": "774",
+    "source": "llama/alpaca"
+  },
+  {
+    "id": "847",
+    "source": "chicken"
+  },
+  {
+    "id": "377",
+    "source": "turkey"
+  },
+  {
+    "id": "514",
+    "source": "goose"
+  },
+  {
+    "id": "754",
+    "source": "duck"
+  },
+  {
+    "id": "366",
+    "source": "guinea fowl"
+  },
+  {
+    "id": "681",
+    "source": "broiler"
+  },
+  {
+    "id": "431",
+    "source": "deer/elk/reindeer"
+  },
+  {
+    "id": "336",
+    "source": "rabbit/hare"
+  },
+  {
+    "id": "586",
+    "source": "fox"
+  },
+  {
+    "id": "150",
+    "source": "mink"
+  },
+  {
+    "id": "646",
+    "source": "dog"
+  },
+  {
+    "id": "812",
+    "source": "cat"
+  },
+  {
+    "id": "741",
+    "source": "ostrich/elmu"
+  },
+  {
+    "id": "781",
+    "source": "pigeon"
+  },
+  {
+    "id": "594",
+    "source": "bees"
+  },
+  {
+    "id": "265",
+    "source": "silkworms"
+  },
+  {
+    "id": "470",
+    "source": "insects/worms"
+  },
+  {
+    "id": "671",
+    "source": "industrial_waste"
+  },
+  {
+    "id": "627",
+    "source": "household_waste"
+  },
+  {
+    "id": "012",
+    "source": "sewage"
+  },
+  {
+    "id": "533",
+    "source": "crop_residues"
+  },
+  {
+    "id": "606",
+    "source": "mixed"
+  }
+]

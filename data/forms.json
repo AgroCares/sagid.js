@@ -1,0 +1,34 @@
+[
+  {
+    "id": "40",
+    "form": "liquid"
+  },
+  {
+    "id": "03",
+    "form": "granules"
+  },
+  {
+    "id": "25",
+    "form": "crystals"
+  },
+  {
+    "id": "32",
+    "form": "powder"
+  },
+  {
+    "id": "67",
+    "form": "sticks"
+  },
+  {
+    "id": "76",
+    "form": "slurry"
+  },
+  {
+    "id": "89",
+    "form": "solid"
+  },
+  {
+    "id": "53",
+    "form": "shreds"
+  }
+]

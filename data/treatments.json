@@ -1,0 +1,26 @@
+[
+  {
+    "id": "30",
+    "treatment": "none"
+  },
+  {
+    "id": "19",
+    "treatment": "composted"
+  },
+  {
+    "id": "76",
+    "treatment": "fermented"
+  },
+  {
+    "id": "70",
+    "treatment": "dried"
+  },
+  {
+    "id": "47",
+    "treatment": "concentrated"
+  },
+  {
+    "id": "95",
+    "treatment": "digestate"
+  }
+]
