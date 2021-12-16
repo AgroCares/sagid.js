@@ -4,7 +4,7 @@
   "description": "Create, verify and decode Soil Amendment Global ID's",
   "main": "scripts/index.js",
   "scripts": {
-    "test": "node tests/test1.js"
+    "test": "node test/test1.js"
   },
   "repository": {
     "type": "git",

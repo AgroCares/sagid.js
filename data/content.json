@@ -1,0 +1,14 @@
+[
+    {
+        "id": "00",
+        "content": "nitrogen",
+        "formula": "N",
+        "unit": "%"
+    },
+    {
+        "id": "01",
+        "content": "phosphorus",
+        "formula": "P2O5",
+        "unit": "%"
+    }
+]
