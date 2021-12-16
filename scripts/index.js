@@ -81,20 +81,24 @@ const getExponent = function (number) {
 
 createContentCode = function (value, content) {
 
-    // Get the lists
-    const lists = new Lists();
+    let contentCode = '';
+    if (value !== null) {
 
-    // Lookup ID for the content
-    const contentID = lists.getContentID(content);
+        // Get the lists
+        const lists = new Lists();
 
-    // Get the first 2 digits of the value
-    const contentDigits = getFirst2digits(value);
+        // Lookup ID for the content
+        const contentID = lists.getContentID(content);
 
-    // Get the exponent
-    const contentExponent = getExponent(value);
+        // Get the first 2 digits of the value
+        const contentDigits = getFirst2digits(value);
 
-    // Create the code
-    const contentCode = `${contentID}${contentDigits}${contentExponent}`;
+        // Get the exponent
+        const contentExponent = getExponent(value);
+
+        // Create the code
+        contentCode = `${contentID}${contentDigits}${contentExponent}`;
+    }
 
     return contentCode;
 }
@@ -128,7 +132,12 @@ calculateValidationCode = function (number) {
     return validationCode;
 }
 
-const createSagidV1 = function (source, treatment, form, euid, nitrogen, phosphorus) {
+const createSagidV1 = function (source, treatment, form, euid,
+    nitrogen = null, phosphorus = null, potassium = null, effective_organic_matter = null,
+    sulphur = null, magnesium = null, calcium = null, sodium= null, 
+    chlorine = null, boron = null, copper = null,
+    iron = null, manganese= null, molybdenum = null, zinc = null, 
+    selenium = null, cobalt = null, silicon = null) {
 
     // Validate the input
     // TODO: Check if the input is valid
@@ -154,8 +163,56 @@ const createSagidV1 = function (source, treatment, form, euid, nitrogen, phospho
     // Create the code for phosphorus
     const phosphorusCode = createContentCode(phosphorus, 'phosphorus');
 
+    // Create the code for potassium
+    const potassiumCode = createContentCode(potassium, 'potassium');
+
+    // Create the code for effective organic matter
+    const effectiveOrganicMatterCode = createContentCode(effective_organic_matter, 'effective organic matter');
+
+    // Create the code for sulphur
+    const sulphurCode = createContentCode(sulphur, 'sulphur');
+
+    // Create the code for magnesium
+    const magnesiumCode = createContentCode(magnesium, 'magnesium');
+
+    // Create the code for calcium
+    const calciumCode = createContentCode(calcium, 'calcium');
+
+    // Create the code for sodium
+    const sodiumCode = createContentCode(sodium, 'sodium');
+
+    // Create the code for chlorine
+    const chlorineCode = createContentCode(chlorine, 'chlorine');
+
+    // Create the code for boron
+    const boronCode = createContentCode(boron, 'boron');
+
+    // Create the code for copper
+    const copperCode = createContentCode(copper, 'copper');
+
+    // Create the code for iron
+    const ironCode = createContentCode(iron, 'iron');
+
+    // Create the code for manganese
+    const manganeseCode = createContentCode(manganese, 'manganese');
+
+    // Create the code for zinc
+    const zincCode = createContentCode(zinc, 'zinc');
+
+    // Create the code for molybdenum
+    const molybdenumCode = createContentCode(molybdenum, 'molybdenum');
+
+    // Create the code for selenium
+    const seleniumCode = createContentCode(selenium, 'selenium');
+
+    // Create the code for cobalt
+    const cobaltCode = createContentCode(cobalt, 'cobalt');
+
+    // Create the code for silicon
+    const siliconCode = createContentCode(silicon, 'silicon');
+
     // Concate the sagid code
-    const sagidLong = `${sourceID}${treatmentID}${formID}${nitrogenCode}${phosphorusCode}`;
+    const sagidLong = `${sourceID}${treatmentID}${formID}${nitrogenCode}${phosphorusCode}${potassiumCode}${effectiveOrganicMatterCode}${sulphurCode}${magnesiumCode}${calciumCode}${sodiumCode}${chlorineCode}${boronCode}${copperCode}${ironCode}${manganeseCode}${molybdenumCode}${zincCode}${seleniumCode}${cobaltCode}${siliconCode}`;
 
     // Calculate validation code using Modulo97
     const validationCode = calculateValidationCode(sagidLong);

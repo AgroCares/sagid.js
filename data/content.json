@@ -10,5 +10,101 @@
         "content": "phosphorus",
         "formula": "P2O5",
         "unit": "%"
+    },
+    {
+        "id": "02",
+        "content": "potassium",
+        "formula": "K2O",
+        "unit": "%"
+    },
+    {
+        "id": "03",
+        "content": "effective organic matter",
+        "formula": null,
+        "unit": "%"
+    },
+    {
+        "id": "04",
+        "content": "sulphur",
+        "formula": "SO3",
+        "unit": "%"
+    },
+    {
+        "id": "05",
+        "content": "magnesium",
+        "formula": "MgO",
+        "unit": "%"
+    },
+    {
+        "id": "06",
+        "content": "calcium",
+        "formula": "CaO",
+        "unit": "%"
+    },
+    {
+        "id": "07",
+        "content": "sodium",
+        "formula": "Na2O",
+        "unit": "%"
+    },
+    {
+        "id": "08",
+        "content": "chlorine",
+        "formula": "Cl",
+        "unit": "%"
+    },
+    {
+        "id": "09",
+        "content": "boron",
+        "formula": "B",
+        "unit": "%"
+    },
+    {
+        "id": "10",
+        "content": "copper",
+        "formula": "Cu",
+        "unit": "%"
+    },
+    {
+        "id": "11",
+        "content": "iron",
+        "formula": "fe",
+        "unit": "%"
+    },
+    {
+        "id": "12",
+        "content": "manganese",
+        "formula": "Mn",
+        "unit": "%"
+    },
+    {
+        "id": "13",
+        "content": "molybdenum",
+        "formula": "Mo",
+        "unit": "%"
+    },
+    {
+        "id": "14",
+        "content": "zinc",
+        "formula": "Zn",
+        "unit": "%"
+    },
+    {
+        "id": "15",
+        "content": "selenium",
+        "formula": "Se",
+        "unit": "%"
+    },
+    {
+        "id": "16",
+        "content": "cobalt",
+        "formula": "Co",
+        "unit": "%"
+    },
+    {
+        "id": "17",
+        "content": "sillicon",
+        "formula": "Si",
+        "unit": "%"
     }
 ]
