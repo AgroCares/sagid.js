@@ -12,6 +12,7 @@ const magnesium = null;
 const calcium = null;
 
 const euid = 'NLNHR.76719235';
+const country = null;
 
-const sagidCode = sagid.createSagid(source, treatment, form, euid, nitrogen, phosphorus , potassium, effective_organic_matter, sulphur, magnesium, calcium);
+const sagidCode = sagid.createSagid(source, treatment, form, euid, country, nitrogen, phosphorus , potassium, effective_organic_matter, sulphur, magnesium, calcium);
 console.log(sagidCode);

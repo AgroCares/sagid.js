@@ -63,15 +63,20 @@ const createHash = function (input) {
         .digest("hex");
 }
 
-const createProducerCode = function (euid) {
+const createProducerCode = function (euid, country) {
 
-    // Split between country and register number
-    const country = euid.slice(0, 2).toUpperCase();
-    const registerCode = euid.substring(2).toUpperCase();
+    let producerCode = '';
+    if (euid !== null) {
+        // Split between country and register number
+        const country = euid.slice(0, 2).toUpperCase();
+        const registerCode = euid.substring(2).toUpperCase();
 
-    // Hash the register number and add country code to beginning of the code
-    const registerHash = createHash(registerCode);
-    const producerCode = country + registerHash;
+        // Hash the register number and add country code to beginning of the code
+        const registerHash = createHash(registerCode);
+        producerCode = country + registerHash;
+    } else if (country !== null) {
+        producerCode = country;
+    }
 
     return producerCode;
 }
@@ -168,6 +173,7 @@ calculateValidationCode = function (number) {
  * @param {string} treatment Treatment of the product. See the list of treatments in the data folder
  * @param {string} form Form of the product. See the list of treatments in the data folder
  * @param {string} euid EUropean Unique company IDentifier of the producer
+ * @param {string} country Country of the producer (overwritten when euid is set)
  * @param {number} nitrogen Total nitrogen (N) content of product in %
  * @param {number} phosphorus Phosphate (P2O5) content of product in %
  * @param {number} potassium Potassium (K2O) content of product in %
@@ -189,7 +195,7 @@ calculateValidationCode = function (number) {
  * @returns {string} The SAGID of the product
  */
 
-const createSagidV1 = function (source, treatment, form, euid,
+const createSagidV1 = function (source, treatment, form, euid = null, country = null,
     nitrogen = null, phosphorus = null, potassium = null, effective_organic_matter = null,
     sulphur = null, magnesium = null, calcium = null, sodium= null, 
     chlorine = null, boron = null, copper = null,
@@ -279,7 +285,7 @@ const createSagidV1 = function (source, treatment, form, euid,
     const sagidEncoded = encodeBase58(sagidLongValid);
 
     // Create the producer code
-    const producerCode = createProducerCode(euid);
+    const producerCode = createProducerCode(euid, country);
 
     // Create the sagid code
     const sagid = `${version}${producerCode}-${sagidEncoded}`;
